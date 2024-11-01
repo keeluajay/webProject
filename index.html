@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 class="heading">Product Dashboard</h1>
+      <button class="addNew" onclick="toggleProductForm()">Add New Product</button>
+      <input type="text" id="search-input" placeholder="Search products..." oninput="handleSearch()">
+    </header>
+
+    <!-- Product Form (for Creating/Editing) -->
+    <div id="product-form" class="product-form">
+      <h2 id="form-title">Add Product</h2>
+      <form onsubmit="handleFormSubmit(event)">
+        <input type="text" id="product-name" placeholder="Name" required>
+        <input type="text" id="product-description" placeholder="Description" required>
+        <input type="number" id="product-price" placeholder="Price" required>
+        <input type="number" id="product-quantity" placeholder="Quantity" required>
+        <input type="text" id="product-category" placeholder="Category (Optional)">
+        <input type="url" id="product-image" placeholder="Image URL (Optional)">
+        <!-- <button type="submit">Save Product</button> -->
+      </form>
+      <button class="save" type="submit">Save Product</button>
+      <button class="btn" onclick="toggleProductForm()">Cancel</button>
+    </div>
+
+    <!-- Sorting Options -->
+    <div class="sort-options">
+      <label>Sort by:</label>
+      <select id="sort-select" onchange="sortProducts()">
+        <option value="name">Name</option>
+        <option value="price">Price</option>
+        <option value="category">Category</option>
+      </select>
+    </div>
+
+    <!-- Product List -->
+    <div id="product-list" class="product-list"></div>
+
+    <!-- Pagination Controls -->
+    <div class="pagination">
+      <button class="previous" onclick="prevPage()">Previous</button>
+      <span id="page-number">1</span>
+      <button class="next" onclick="nextPage()">Next</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
